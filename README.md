@@ -4,11 +4,3 @@
 <h4 align="center">
     O Código fonte foi feito a partir de um curso da Rocketseat
 </h4>
-
-## Installing / Getting started
-
-```shell
-
-
-```
-
