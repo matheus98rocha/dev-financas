@@ -1,5 +1,8 @@
 :root {
   --dark-blue: #363f5f;
+  --green: #49aa26;
+  --red: #e92929;
+
 }
 
 * {
@@ -8,9 +11,25 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 93.75%;
+}
+
 body {
   background: #f0f2f5;
   font-family: "Poppins", "sans-serif";
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .container {
@@ -26,6 +45,58 @@ h2 {
 
   font-weight: normal;
 }
+
+/* Links e buttons */
+
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3dd705;
+}
+
+button {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+
+  color: white;
+  background: var(--green);
+  border-radius: 0.25rem;
+
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3dd705;
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.button.cancel {
+  color: var(--red);
+  border: 2px var(--red) solid;
+  border-radius: 0.25rem;
+  height: 50px;
+  display: flex;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0.6;
+}
+
+.button.cancel:hover{
+  opacity: 1;
+}
+
 /* Header */
 
 header {
@@ -63,6 +134,10 @@ header {
 .card h3 {
   font-weight: normal;
   font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {
@@ -73,7 +148,7 @@ header {
 }
 
 .card.in p:hover {
-  color: #49aa26;
+  color: var(--green);
 }
 
 .card.out p:hover {
@@ -81,8 +156,13 @@ header {
 }
 
 .card.total {
-  background-color: #49aa26;
+  background-color: var(--green);
   color: white;
+}
+
+#transaction {
+  display: block;
+  overflow-x: auto;
 }
 
 #data-table {
@@ -123,6 +203,11 @@ table tbody td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
+table thead th:last-child,
+table tbody td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
 td.description {
   color: var(--dark-blue);
 }
@@ -135,6 +220,68 @@ td.expense {
   color: #e92929;
 }
 
+/* Modal */
+
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background-color: #f0f2f5;
+  padding: 2.4rem;
+}
+
+/* Form */
+
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.8rem;
+  width: 100%;
+}
+
+.input-group {
+  margin: 0.8rem
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+  width: 48%;
+}
+
 /* Footer */
 
 footer {
@@ -142,4 +289,17 @@ footer {
   padding: 4rem 0 2rem;
   color: var(--dark-blue);
   opacity: 0.6;
+}
+
+/* Responsive */
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
 }
