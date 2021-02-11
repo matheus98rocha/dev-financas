@@ -33,19 +33,33 @@ const transactions = [{
 
 const Transaction = {
     incomes() {
-
+        let income = 0;
+        transactions.forEach(transaction => {
+            if (transaction.amount > 0) {
+                income += transaction.amount;
+            }
+        })
+        return income;
     },
     expenses() {
+        let expense = 0;
+        transactions.forEach(transaction => {
+            if (transaction.amount < 0) {
+                expense += transaction.amount;
+            }
+        })
+        return expense;
 
     },
     total() {
+        return Transaction.incomes() + Transaction.expenses();
 
     }
 };
 
 const Utils = {
     formatCurrency(value) {
-        const signal = Number(value) < 0 ? "-" : "+";
+        const signal = Number(value) < 0 ? "-" : "";
 
         value = String(value).replace(/\D/g, "");
 
@@ -81,9 +95,16 @@ const DOM = {
             <td> <img src="assets/minus.svg" alt="Remover Transação"></img> </td>
     `
         return html;
+    },
+    updateBalance() {
+        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes());
+        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency(Transaction.expenses());
+        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total());
     }
 }
 
 transactions.forEach((transaction) => {
     DOM.addTransaction(transaction);
 })
+
+DOM.updateBalance();

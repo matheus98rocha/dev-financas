@@ -93,7 +93,7 @@ button:hover {
   opacity: 0.6;
 }
 
-.button.cancel:hover{
+.button.cancel:hover {
   opacity: 1;
 }
 
@@ -299,6 +299,8 @@ footer {
 
   #balance {
     display: flex;
+    align-items: centers;
+    justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
   }
