@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Finanças</title>
+    <link rel="shortcut icon" href="assets/faviicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -100,6 +101,17 @@
             </div>
         </div>
     </div>
+
+    <div class="modal-overlay-error">
+        <div class="modal-error">
+            <div class="modal-message">
+                <span class="closebtn" onclick="Modal.closeError()">&times;</span>
+                <p id="error-message">Você esqueceu de preencher alguns campos</p>
+            </div>
+        </div>
+    </div>
+
+    <p id="empty-finance">Você ainda não tem finanças cadastradas</p>
 
     <script src="script.js"></script>
 </body>

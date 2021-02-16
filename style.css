@@ -236,7 +236,7 @@ td.expense {
   visibility: hidden;
 }
 
-.modal-overlay.active {
+.active {
   opacity: 1;
   visibility: visible;
 }
@@ -245,6 +245,54 @@ td.expense {
   background-color: #f0f2f5;
   padding: 2.4rem;
 }
+
+
+/* Modal error */
+
+.modal-overlay-error {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show-error {
+  opacity: 1;
+  visibility: visible;
+}
+
+#error-message {
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.modal-error {
+  background-color: #f44336;
+  padding: 2.4rem;
+}
+
+
 
 /* Form */
 
@@ -304,4 +352,18 @@ footer {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
   }
+}
+
+#empty-finance {
+  padding-top: 20px;
+  opacity: 0.4;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide-message {
+  opacity: 0;
+  visibility: hidden;
 }

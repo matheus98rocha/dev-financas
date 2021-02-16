@@ -1,13 +1,27 @@
 const Modal = {
     open() {
         document.querySelector('.modal-overlay').classList.add('active');
+        document.querySelector('#empty-finance').classList.add('hide-message');
 
     },
     close() {
         document.querySelector('.modal-overlay').classList.remove('active');
+        window.location.reload();
 
+    },
+    openError() {
+        document.querySelector('.modal-overlay-error').classList.add('show-error');
+    },
+    closeError() {
+        document.querySelector('.modal-overlay-error').classList.remove('show-error');
+    },
+    hideEmpty() {
+        document.querySelector('#empty-finance').classList.add('hide-message');
+
+    },
+    showEmpty() {
+        document.querySelector('#empty-finance').classList.remove('hide-message');
     }
-
 }
 
 
@@ -207,7 +221,11 @@ const Form = {
             Modal.close();
             App.reload();
         } catch (error) {
-            alert(error.message);
+            //alert(error.message);
+            Modal.openError();
+            setTimeout(() => {
+                Modal.closeError();
+            }, 4000)
         }
     }
 };
@@ -218,7 +236,13 @@ const App = {
 
         DOM.updateBalance();
 
-        Storage.set(Transaction.all)
+        Storage.set(Transaction.all);
+
+        if (Transaction.all.length > 0) {
+            Modal.hideEmpty();
+        } else {
+            Modal.showEmpty()
+        }
 
     },
     reload() {
